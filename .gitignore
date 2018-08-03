@@ -36,4 +36,4 @@ algorithms.sln
 algorithms/algorithms.vcxproj
 algorithms/algorithms.vcxproj.filters
 
-main
+runBFS

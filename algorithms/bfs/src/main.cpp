@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "../lib/Vertex.h"
+#include "./bfs.cpp"
 
 using namespace std;
 
@@ -13,6 +14,9 @@ int main() {
   vector<Vertex> graph;
   parseGraph(graph, FILE_PATH);
   cout << "Parsing completed!" << endl;
+  printGraph(graph);
+  bfs(graph[7]);
+  cout << "BFS completed!" << endl;
   printGraph(graph);
   return 0;
 }
@@ -35,7 +39,7 @@ void parseGraph(vector<Vertex> &graph, const string filePath) {
     in >> vertexVal >> numEdges;
     for(int j = 0; j < numEdges; j++) {
       in >> edge;
-      graph[vertexVal].addEdge(&graph[edge]);
+      graph[vertexVal].addEdge(graph[edge]);
     }
   }
 }
@@ -52,6 +56,13 @@ void printGraph(vector<Vertex> &graph) {
     for(e = g -> getEdges().begin(); e != g -> getEdges().end(); e++) {
       cout << (*e) -> getValue() << " ";
     }
-    cout << "\n" << endl;
+    cout << "\n";
+    string discover = (g -> isDiscovered()) ? ("true") : ("false");
+    cout << "Discovered: " << discover << endl;
+    if(g->isDiscovered()) {
+      cout << "Discovery Time: " << g -> getStartTime() << endl;
+      cout << "Finish Time: " << g -> getFinishTime() << endl;
+    }
+    cout << "\n";
   }
 }

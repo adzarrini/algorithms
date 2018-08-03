@@ -1,6 +1,6 @@
 # CC
-CC = clang++
-NAME = bfs
+CC = c++
+NAME = runBFS
 CFLAGS = -W -Wall
 
 $(NAME): vertex.o main.o
@@ -9,7 +9,7 @@ $(NAME): vertex.o main.o
 vertex.o: lib/vertex.cpp lib/vertex.h
 	$(CC) $(CFLAGS) -c lib/vertex.cpp
 
-main.o: src/main.cpp lib/vertex.h
+main.o: src/main.cpp src/bfs.cpp lib/vertex.h
 	$(CC) $(CFLAGS) -c src/main.cpp
 
 run: $(NAME)
